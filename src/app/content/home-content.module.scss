@@ -1,0 +1,8 @@
+@use '@/styles/mixins.scss' as mixins;
+
+.error {
+  color: oklch(0.7 0.16 25);
+  font-size: mixins.rem(14.4);
+  margin-top: mixins.rem(8);
+}
+

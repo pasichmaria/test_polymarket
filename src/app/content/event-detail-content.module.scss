@@ -1,0 +1,205 @@
+@use '@/styles/mixins.scss' as mixins;
+@use '@/styles/globals.scss' as global;
+
+.layout {
+  display: grid;
+  grid-template-columns: mixins.rem(950) mixins.rem(350);
+  gap: mixins.rem(25);
+  align-items: start;
+
+  @media (max-width: mixins.em(global.$tablet)) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.chartWrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.tickBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: mixins.rem(8) mixins.rem(12);
+  align-items: center;
+  font-size: mixins.rem(11);
+  color: var(--neutral-300);
+  border-radius: mixins.rem(8);
+  padding: mixins.rem(26) mixins.rem(8);
+}
+
+.tickSideBuy,
+.tickSideSell,
+.tickSideUnknown {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: mixins.rem(999);
+  padding: mixins.rem(2) mixins.rem(8);
+  font-size: mixins.rem(10);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.tickSideBuy {
+  color: #4ce59a;
+  background: color-mix(in oklch, #4ce59a 16%, transparent);
+}
+
+.tickSideSell {
+  color: #ff8a8a;
+  background: color-mix(in oklch, #ff8a8a 16%, transparent);
+}
+
+.tickSideUnknown {
+  color: var(--neutral-400);
+  background: color-mix(in oklch, var(--neutral-400) 12%, transparent);
+}
+
+.chartTooltip {
+  background: color-mix(in oklch, var(--surface-100) 92%, transparent);
+  border: 1px solid color-mix(in oklch, var(--pm-border) 72%, transparent);
+  border-radius: mixins.rem(8);
+  padding: mixins.rem(6) mixins.rem(8);
+  color: var(--text-primary);
+  font-size: mixins.rem(11);
+  font-variant-numeric: tabular-nums;
+}
+
+.sourceBadge {
+  font-size: mixins.rem(10);
+  color: var(--neutral-400);
+  border: 1px solid color-mix(in oklch, var(--pm-border) 65%, transparent);
+  border-radius: mixins.rem(999);
+  padding: mixins.rem(2) mixins.rem(7);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.previewBar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: mixins.rem(8);
+}
+
+.previewSvg {
+  width: 100%;
+  height: mixins.rem(8);
+}
+
+.previewTrack {
+  fill: color-mix(in oklch, var(--pm-border) 55%, transparent);
+}
+
+.previewFill {
+  fill: var(--pm-yes);
+  transition: width 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.previewLabelYes,
+.previewLabelNo {
+  font-size: mixins.rem(11);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.previewLabelYes {
+  color: var(--pm-yes);
+}
+
+.previewLabelNo {
+  color: var(--pm-no);
+}
+
+.liveBadge,
+.liveBadgeIdle {
+  font-size: mixins.rem(11);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.liveBadge {
+  color: #359a5e;
+}
+
+.liveBadgeIdle {
+  color: var(--text-muted);
+}
+
+.chartHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chartHeadRight {
+  display: inline-flex;
+  align-items: center;
+  gap: mixins.rem(12);
+}
+
+.chartRanges {
+  display: inline-flex;
+  align-items: center;
+  gap: mixins.rem(6);
+  background: color-mix(in oklch, var(--surface-100) 70%, transparent);
+  border: 1px solid color-mix(in oklch, var(--surface-150) 65%, transparent);
+  border-radius: mixins.rem(8);
+  padding: mixins.rem(3);
+}
+
+.rangeBtn {
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-muted);
+  border-radius: mixins.rem(6.4);
+  font-size: mixins.rem(11);
+  font-weight: 700;
+  padding: mixins.rem(4) mixins.rem(8);
+  cursor: pointer;
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.rangeBtnActive {
+  border-color: color-mix(in oklch, var(--brand-primary) 45%, var(--surface-150));
+  color: var(--neutral-300);
+  background: color-mix(in oklch, var(--brand-primary) 16%, transparent);
+}
+
+.chartTitle {
+  color: var(--text-secondary);
+  font-size: mixins.rem(12);
+  font-weight: 600;
+}
+
+.chartPrice {
+  color: var(--text-primary);
+  font-size: mixins.rem(22);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.chartSvg {
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: mixins.rem(220);
+  display: grid;
+}
+
+.chartCanvas {
+  width: 100%;
+  height: 100%;
+  min-height: mixins.rem(220);
+}
+
+.chartEmpty {
+  align-self: center;
+  justify-self: center;
+  color: var(--neutral-400);
+  font-size: mixins.rem(12);
+}
+

@@ -1,0 +1,80 @@
+@use '@/styles/mixins.scss' as mixins;
+
+.subtitle {
+  margin: mixins.rem(6) 0 0;
+  max-width: 58ch;
+  color: var(--pm-text-muted);
+  font-size: mixins.rem(13);
+}
+
+.heroRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: mixins.rem(8);
+}
+
+.statBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.statLabel {
+  font-size: mixins.rem(11);
+  color: var(--pm-text-muted);
+}
+
+.error {
+  margin: 0 0 mixins.rem(10);
+  color: oklch(0.7 0.16 25);
+}
+
+.segmentRow {
+  display: flex;
+  gap: mixins.rem(8);
+  margin-bottom: mixins.rem(10);
+}
+
+.segment {
+  border: 1px solid var(--pm-border);
+  background: var(--pm-bg-elevated);
+  color: var(--pm-text-muted);
+  border-radius: mixins.rem(8);
+  padding: mixins.rem(6) mixins.rem(10);
+  font-size: mixins.rem(12);
+  font-weight: 600;
+}
+
+.segmentActive {
+  color: var(--pm-text);
+  border-color: color-mix(in oklch, var(--brand-primary) 65%, var(--pm-border));
+  background: color-mix(in oklch, var(--brand-primary) 14%, var(--pm-bg-elevated));
+}
+
+.subcategoryRow {
+  display: flex;
+  gap: mixins.rem(6);
+  overflow-x: auto;
+  margin-bottom: mixins.rem(14);
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.subcategoryChip {
+  border: 1px solid var(--pm-border);
+  background: var(--pm-bg-elevated);
+  color: var(--pm-text-muted);
+  border-radius: mixins.rem(6);
+  padding: mixins.rem(5) mixins.rem(10);
+  font-size: mixins.rem(11);
+  white-space: nowrap;
+}
+
+.section {
+  margin-bottom: mixins.rem(18);
+}
+

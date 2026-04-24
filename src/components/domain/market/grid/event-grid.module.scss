@@ -1,0 +1,106 @@
+@use '@/styles/mixins' as mixins;
+@use '@/styles/globals' as global;
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: mixins.rem(12.8);
+  gap: mixins.rem(16);
+  flex-wrap: wrap;
+}
+
+.h1 {
+  font-size: mixins.rem(17.92);
+  font-weight: 700;
+  color: var(--pm-text);
+  margin: 0;
+  line-height: 1.1;
+}
+
+.sub {
+  font-size: mixins.rem(12.16);
+  color: var(--pm-text-muted);
+  margin: mixins.rem(4) 0 0;
+  max-width: 50ch;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: mixins.rem(12);
+
+  @media (max-width: mixins.em(1200)) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @media (max-width: mixins.em(900)) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: mixins.em(global.$mobile)) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.gridFour {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  @media (max-width: mixins.em(1200)) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @media (max-width: mixins.em(900)) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: mixins.em(global.$mobile)) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.skeleton {
+  min-height: mixins.rem(115.2);
+  border-radius: mixins.rem(8.8);
+  background: linear-gradient(
+    110deg,
+    var(--pm-bg-elevated) 0%,
+    color-mix(in oklch, var(--pm-text) 6%, var(--pm-bg-elevated)) 45%,
+    var(--pm-bg-elevated) 90%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.35s ease-in-out infinite;
+  border: 1px solid color-mix(in oklch, var(--pm-border) 50%, transparent);
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.empty {
+  color: var(--pm-text-muted);
+  font-size: mixins.rem(14.4);
+  padding: mixins.rem(32) 0;
+  text-align: center;
+}
+
+.badge {
+  font-size: mixins.rem(10.56);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pm-text-muted);
+  white-space: nowrap;
+}
+
+.rightStack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: mixins.rem(4.8);
+}

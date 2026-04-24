@@ -1,0 +1,17 @@
+@use './variables.scss';
+@use './mixins.scss' as mixins;
+@use './globals.scss' as global;
+@use './common.scss';
+
+/* Global surface hook for feature layouts (imported in layout.tsx, not a CSS module) */
+.body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--pm-bg-page);
+  background-image: none;
+
+  @media (max-width: mixins.em(global.$mobile)) {
+    background-image: none;
+  }
+}

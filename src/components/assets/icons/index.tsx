@@ -1,0 +1,9 @@
+export { SearchIcon } from './SearchIcon';
+export { SlidersIcon } from './SlidersIcon';
+export { BookmarkIcon } from './BookmarkIcon';
+export { ChevronDownIcon } from './ChevronDownIcon';
+export { TrendingUpIcon } from './TrendingUpIcon';
+export { MenuIcon } from './MenuIcon';
+export { GiftIcon } from './GiftIcon';
+export { RepeatIcon } from './RepeatIcon';
+export { InfoCircleIcon } from './InfoCircleIcon';

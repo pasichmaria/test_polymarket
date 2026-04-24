@@ -1,0 +1,245 @@
+@use '@/styles/mixins' as mixins;
+@use '@/styles/globals' as global;
+
+.row {
+  display: grid;
+  grid-template-columns: mixins.rem(48) minmax(0, 1fr) mixins.rem(74) auto;
+  gap: mixins.rem(12);
+  align-items: center;
+  min-height: mixins.rem(75);
+  padding: mixins.rem(10) mixins.rem(8);
+  border-bottom: 1px solid color-mix(in oklch, var(--pm-border) 70%, transparent);
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  position: relative;
+
+  @media (max-width: mixins.em(global.$mobile)) {
+    grid-template-columns: mixins.rem(40) minmax(0, 1fr);
+    grid-template-areas:
+      'media meta'
+      'media actions';
+    row-gap: mixins.rem(6);
+  }
+}
+
+.rowSelected {
+  background: transparent;
+}
+
+.mediaWrap {
+  position: relative;
+  width: mixins.rem(48);
+  height: mixins.rem(48);
+  border-radius: mixins.rem(10);
+  overflow: hidden;
+  border: 1px solid color-mix(in oklch, var(--pm-border) 70%, transparent);
+
+  @media (max-width: mixins.em(global.$mobile)) {
+    grid-area: media;
+    width: mixins.rem(40);
+    height: mixins.rem(40);
+  }
+}
+
+.media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.mediaFallback {
+  width: 100%;
+  height: 100%;
+  background: color-mix(in oklch, var(--pm-border) 70%, var(--pm-surface));
+}
+
+.meta {
+  min-width: 0;
+
+  @media (max-width: mixins.em(global.$mobile)) {
+    grid-area: meta;
+  }
+}
+
+.rowUp {
+  background: transparent;
+  transition: none;
+}
+
+.rowDown {
+  background: transparent;
+  transition: none;
+}
+
+.question {
+  font-size: mixins.rem(13.5);
+  font-weight: 600;
+  color: var(--pm-text);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0;
+  max-width: 35ch;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.volume {
+  margin: mixins.rem(2) 0 0;
+  font-size: mixins.rem(12);
+  color: var(--pm-text-muted);
+  font-weight: 600;
+}
+
+.percentWrap {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.percent {
+  font-size: mixins.rem(28);
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--pm-text);
+  font-family: var(--font-display);
+  min-width: 0;
+  text-align: center;
+}
+
+.priceChangeBadge {
+  position: absolute;
+  left: calc(100% + #{mixins.rem(8)});
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: mixins.rem(18);
+  padding: 0 mixins.rem(6); 
+  font-size: mixins.rem(12);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+}
+
+.priceChangeUp {
+  color: #3cad65;
+  background: transparent;
+}
+
+.priceChangeDown {
+  color: #b12f2f;
+  background: transparent;
+}
+
+.actions {
+  display: inline-flex;
+  align-items: center;
+  gap: mixins.rem(8);
+  justify-self: end;
+
+  @media (max-width: mixins.em(global.$mobile)) {
+    grid-area: actions;
+    justify-self: start;
+  }
+}
+
+.actionBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: mixins.rem(136);
+  padding: mixins.rem(8) mixins.rem(16);     
+  min-height: mixins.rem(48);
+  overflow: hidden;
+  border: none;
+  border-radius: mixins.rem(8);
+  font-size: mixins.rem(14); 
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.actionYes {
+  background: #254334;
+  color: #3cad65;
+
+  &:hover {
+    background: color-mix(in oklch, #254334 85%, white);
+  }
+}
+
+.actionYesActive {
+  background: #349a5e;
+  color: #ffffff;
+}
+
+.actionNo {
+  background: #482426;
+  color: #b12f2f;
+
+  &:hover {
+    background: color-mix(in oklch, #482426 85%, white);
+  }
+}
+
+.actionNoActive {
+  background: #cb3131;
+  color: #ffffff;
+}
+
+.buttonDefaultLabel {
+  display: inline-block;
+  white-space: nowrap;
+  line-height: 1.1;
+  font-weight: 500;
+  margin-right: mixins.rem(4);
+}
+
+.buttonValueLabel {
+  display: block;
+  white-space: nowrap;
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+.up {
+  animation: none;
+}
+.down {
+  animation: none;
+}
+
+@keyframes nudge {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-3px);
+  }
+}
+@keyframes nudge2 {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(3px);
+  }
+}
+

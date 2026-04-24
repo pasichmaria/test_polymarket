@@ -1,0 +1,80 @@
+/* Theme variables */
+:root {
+  /* Base palette */
+  --black: #000000;
+  --white: #ffffff;
+  --bg-primary: #15191d;
+  --bg-secondary: #181d21;
+  --bg-tertiary: #1e2428;
+  --surface-primary: #242b32;
+  --surface-secondary: #2e3841;
+  --border-primary: #586879;
+  --border-secondary: #697d91;
+  --text-primary: #dee3e7;
+  --text-secondary: #bbc4cd;
+  --text-muted: #7b8996;
+
+  /* Brand + semantic */
+  --brand-primary: #0093fd;
+  --brand-primary-soft: #2797ff;
+  --brand-primary-light: #87bfff;
+  --accent-cyan: #0dfde3;
+  --accent-purple: #7c04d0;
+  --accent-purple-light: #c21ff2;
+  --success: #00c0a0;
+  --success-strong: #3db468;
+  --success-dark: #00582c;
+  --success-soft: #d4ffaf;
+  --warning: #fdc503;
+  --warning-dark: #67581d;
+  --warning-orange: #ff9900;
+  --warning-amber: #db8d33;
+  --warning-alt: #ff7f0e;
+  --danger: #e00000;
+  --danger-soft: #cb3131;
+  --danger-dark: #c02020;
+  --danger-orange: #e06020;
+
+  /* Extended palette tokens */
+  --neutral-200: #e5e5e5;
+  --neutral-300: #dee3e7;
+  --neutral-350: #bbc4cd;
+  --neutral-400: #b1bdd2;
+  --neutral-500: #9fa8bc;
+  --neutral-550: #98a1b3;
+  --neutral-600: #93a0b7;
+  --neutral-650: #7d879b;
+  --neutral-700: #6f8080;
+  --neutral-750: #697d91;
+  --neutral-50: #1e2428;
+  --surface-100: #151a22;
+  --surface-110: #161a24;
+  --surface-120: #161b25;
+  --surface-130: #1f2431;
+  --surface-140: #1f3c33;
+  --surface-150: #2a3040;
+  --surface-160: #2a3245;
+  --surface-170: #2b3140;
+  --surface-180: #3a4662;
+  --surface-danger: #3a2328;
+  --bg-card-default: var(--neutral-50);
+
+  /* Typography */
+  --font-display: var(--font-inter), Inter, sans-serif;
+  --font-body: var(--font-inter), Inter, system-ui, sans-serif;
+
+  /* Backward-compatible aliases (legacy pm-* tokens) */
+  --pm-bg-page: var(--bg-primary);
+  --pm-bg-elevated: var(--bg-secondary);
+  --pm-bg-card: var(--bg-card-default);
+  --pm-border: var(--border-primary);
+  --pm-border-strong: var(--border-secondary);
+  --pm-text: var(--text-primary);
+  --pm-text-muted: var(--text-muted);
+  --pm-yes: var(--success-strong);
+  --pm-yes-dim: var(--success);
+  --pm-no: var(--brand-primary-light);
+  --pm-header: var(--bg-primary);
+  --pm-glow: color-mix(in srgb, var(--pm-yes) 22%, transparent);
+
+}

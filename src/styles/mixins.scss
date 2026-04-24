@@ -1,0 +1,74 @@
+@use 'sass:math';
+@use './globals.scss' as global;
+
+@function rem($px) {
+  @return math.div($px, 16) * 1rem;
+}
+
+@function em($px, $current: 16) {
+  @return math.div($px, $current) * 1em;
+}
+
+@mixin adaptiveValue(
+  $property,
+  $startSize,
+  $minSize,
+  $keepSize: 0,
+  $widthFrom: global.$containerWidth,
+  $widthTo: global.$minWidth
+) {
+  @if $startSize == 0 {
+    $startSize: 0.000001;
+  }
+
+  @if $minSize == 0 {
+    $minSize: 0.000001;
+  }
+
+  $addSize: math.div($startSize - $minSize, 16);
+
+  @if $widthFrom == global.$containerWidth and global.$maxWidthContainer == 0 {
+    $widthFrom: global.$maxWidth;
+  }
+
+  $widthFromMedia: em($widthFrom);
+  $widthToMedia: em($widthTo);
+  $slope: math.div(($startSize - $minSize), ($widthFrom - $widthTo));
+  $yIntersection: -$widthTo * $slope + $minSize;
+
+  @if $yIntersection == 0 {
+    $yIntersection: 0.000001;
+  }
+
+  $flyValue: #{rem($yIntersection)}' + '#{$slope * 100}vw;
+  $propertyValue: #{'clamp(' rem($minSize) ',' $flyValue ',' rem($startSize) ')'};
+
+  @if $minSize > $startSize {
+    $propertyValue: #{'clamp(' rem($startSize) ',' $flyValue ',' rem($minSize) ')'};
+  }
+
+  @if $keepSize != 1 and $keepSize != 3 {
+    @media (min-width: $widthFromMedia) {
+      #{$property}: rem($startSize);
+    }
+  }
+
+  @media (min-width: $widthToMedia) and (max-width: $widthFromMedia) {
+    @supports (#{$property}: $propertyValue) {
+      #{$property}: $propertyValue;
+    }
+
+    @supports not (#{$property}: $propertyValue) {
+      #{$property}: calc(
+        #{rem($minSize)} + #{$addSize} * (100vw - #{rem($widthTo)}) /
+          #{math.div($widthFrom, 16) - math.div($widthTo, 16)}
+      );
+    }
+  }
+
+  @if $keepSize != 1 and $keepSize != 2 {
+    @media (max-width: $widthToMedia) {
+      #{$property}: rem($minSize);
+    }
+  }
+}

@@ -1,0 +1,54 @@
+@use '@/styles/mixins.scss' as mixins;
+@use '@/styles/globals.scss' as global;
+
+.error {
+  color: oklch(0.7 0.16 25);
+  margin: 0 0 mixins.rem(10);
+}
+
+.middle {
+  min-width: 0;
+}
+
+/** Two columns inside TabContent body: event list + TradePanel (TabContent already provides the left filter column). */
+.sportsMain {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) mixins.rem(300);
+  gap: mixins.rem(16);
+  align-items: start;
+  width: 100%;
+}
+
+.cardWrap {
+  border-radius: mixins.rem(12);
+  cursor: pointer;
+  transition: box-shadow 0.15s ease;
+}
+
+.cardWrapSelected {
+  box-shadow: 0 0 0 2px color-mix(in oklch, var(--brand-primary-soft) 70%, transparent);
+}
+
+.rightPanel {
+  min-width: 0;
+}
+
+.cardStack {
+  display: flex;
+  flex-direction: column;
+  gap: mixins.rem(10);
+}
+
+.cardStack :global(article) {
+  min-width: 100%;
+}
+
+.muted {
+  color: var(--pm-text-muted);
+}
+
+@media (max-width: mixins.em(global.$desktop-lg)) {
+  .sportsMain {
+    grid-template-columns: 1fr;
+  }
+}

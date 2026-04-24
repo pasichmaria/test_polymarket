@@ -1,0 +1,29 @@
+@use 'sass:math';
+
+// Adaptive grid settings
+$minWidth: 320; // minimum viewport width
+$maxWidth: 1920; // design canvas width
+$minWidthAdaptive: 375; // adaptive design start width
+
+$maxWidthContainer: 1350; // container max-width (0 = no limit)
+$containerPadding: 32; // total horizontal padding (16 + 16)
+$containerWidth: $maxWidthContainer + $containerPadding; // first breakpoint trigger width
+
+// Core breakpoints
+$pc: $containerWidth;
+$tablet: 991.98;
+$mobile: 767.98;
+$mobileSmall: 479.98;
+
+// Extra adaptive points (minimal set)
+$desktop-lg: 1100.98;
+$desktop-md: 950.98;
+$tablet-lg: 900.98;
+$mobile-lg: 600.98;
+$mobile-md: 500.98;
+$mobile-xs: 360.98;
+
+// Legacy-compatible helper values for adaptive mixin
+$startWidthForAdaptiveValue: 600;
+$startWidthForAdaptiveValueProfile: $tablet;
+$maxSizeBtnMobile: 450.98;

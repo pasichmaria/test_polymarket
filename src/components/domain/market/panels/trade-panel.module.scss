@@ -1,0 +1,333 @@
+@use '@/styles/mixins' as mixins;
+@use '@/styles/reusable' as reusable;
+
+.panel {
+  position: sticky;
+  top: mixins.rem(88);
+  background: var(--pm-bg-elevated); 
+  border: 1px solid #242b32;
+  border-radius: mixins.rem(12);
+  --tw-shadow: 0 8px 16px var(--tw-shadow-color, #0000000f);
+  box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  padding: mixins.rem(14.4);
+  @include reusable.flex-column(mixins.rem(12));
+}
+
+.marketTop {
+  @include reusable.flex-row(center);
+}
+
+.eventBadge {
+  @include reusable.inline-row(center, flex-start, mixins.rem(10));
+}
+
+.eventLogoWrap {
+  position: relative;
+  width: mixins.rem(48);
+  height: mixins.rem(48);
+  flex-shrink: 0;
+  border-radius: mixins.rem(10);
+  overflow: hidden;
+  border: 1px solid color-mix(in oklch, var(--pm-border) 70%, transparent);
+}
+
+.eventLogo {
+  object-fit: cover;
+}
+
+.eventLogoFallback {
+  width: mixins.rem(48);
+  height: mixins.rem(48);
+  border-radius: mixins.rem(10);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in oklch, var(--pm-border) 70%, var(--pm-surface));
+  border: 1px solid color-mix(in oklch, var(--pm-border) 70%, transparent);
+  color: var(--text-primary);
+  font-size: mixins.rem(12);
+  font-weight: 700;
+}
+
+.eventMeta {
+  @include reusable.flex-column();
+}
+
+.eventMetaLabel {
+  color: var(--pm-text-muted);
+  font-size: mixins.rem(11);
+}
+
+.eventMetaValue {
+  color: var(--pm-text);
+  font-size: mixins.rem(15);
+}
+
+.question {
+  margin: 0;
+  font-size: mixins.rem(14.72);
+  color: var(--pm-text);
+  line-height: 1.35;
+}
+
+.tabsRow {
+  @include reusable.flex-row(center, space-between, mixins.rem(8));
+  position: relative;
+  padding-bottom: mixins.rem(1);
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: color-mix(in oklch, var(--pm-border) 70%, transparent);
+    pointer-events: none;
+  }
+}
+
+.tradeTabs {
+  @include reusable.inline-row(center, flex-start, mixins.rem(14));
+  position: relative;
+  z-index: 1;
+}
+
+.tabBtn {
+  border: none;
+  background: transparent;
+  border-radius: 0; 
+  padding: mixins.rem(8);
+  font-size: mixins.rem(16);
+  font-weight: 500;
+  color: var(--white);
+  position: relative;
+  cursor: pointer; 
+  transition: color 0.16s ease, opacity 0.16s ease;
+}
+
+.tabBtnInactive {
+  color: #586879;
+  opacity: 0.82;
+}
+
+.tabBtnActive {
+  opacity: 1;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: mixins.rem(-1);
+    height: mixins.rem(2);
+    background: var(--white);
+    border-radius: mixins.rem(2);
+  }
+}
+
+.tabBtnBuyActive {
+  color: #ffffff;
+}
+
+.tabBtnSellActive {
+  color: #ffffff;
+}
+
+.limitDropdown {
+  position: relative;
+  @include reusable.inline-row(center); 
+  background: transparent; 
+}
+
+.limitSelect {
+  min-height: mixins.rem(30);
+  border: none;
+  background: transparent;
+  color: var(--pm-text);
+  font-size: mixins.rem(14);
+  font-weight: 700;
+  padding: mixins.rem(4) mixins.rem(10);
+  appearance: none;
+  cursor: pointer;
+}
+
+.limitChevron {
+  position: absolute;
+  right: mixins.rem(8);
+  width: mixins.rem(10);
+  height: mixins.rem(10);
+  pointer-events: none;
+  color: var(--text-secondary);
+}
+
+
+.sideRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: mixins.rem(8);
+}
+
+.limitPriceRow {
+  @include reusable.flex-row(center, space-between, mixins.rem(10));
+}
+
+.limitPriceLabel {
+  font-size: mixins.rem(12);
+  color: var(--pm-text-muted);
+}
+
+.limitControls {
+  border: 1px solid color-mix(in oklch, var(--pm-border) 65%, transparent);
+  border-radius: mixins.rem(8);
+  @include reusable.inline-row(center, flex-start, mixins.rem(6));
+}
+
+.limitControlBtn {
+  width: mixins.rem(28);
+  height: mixins.rem(28);
+  color: var(--text-primary);
+  font-size: mixins.rem(16);
+  line-height: 1;
+  cursor: pointer;
+}
+
+.limitPriceInput {
+  width: mixins.rem(74);
+  min-height: mixins.rem(28);
+  color: var(--text-primary);
+  font-size: mixins.rem(12);
+  padding: 0 mixins.rem(8);
+  text-align: right;
+}
+
+.sideBtn {
+  border: none;
+  border-radius: mixins.rem(8);
+  color: var(--white);
+  font-size: mixins.rem(13);
+  font-weight: 700;
+  padding: mixins.rem(9) mixins.rem(8);
+  min-height: mixins.rem(48);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.sideBtnActiveYes {
+  background: #359a5e !important;
+  color: var(--white) !important;
+}
+
+.sideBtnActiveNo {
+  background: #cb3131 !important;
+  color: var(--white) !important;
+}
+
+.sideBtnInactive {
+  background: #242b32 !important;
+  color: var(--white) !important;
+}
+
+.amountBlock {
+  @include reusable.flex-column(mixins.rem(8));
+}
+
+.amountLabel {
+  font-size: mixins.rem(16);
+}
+
+.amountInput {
+  width: 100%; 
+  color: #586879;
+  min-height: mixins.rem(60);
+  font-weight: 600;
+  font-size: mixins.rem(40);
+  line-height: 1;
+  padding: mixins.rem(8) mixins.rem(12);
+  text-align: right;
+  appearance: textfield;
+
+  &:focus,
+  &:focus-visible,
+  &:active {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+.amountInput::-webkit-outer-spin-button,
+.amountInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.amountError {
+  margin: 0;
+  color: #cb3131;
+  font-size: mixins.rem(11);
+}
+
+.amountChips {
+  @include reusable.flex-row($gap: mixins.rem(6), $wrap: wrap);
+}
+
+.amountChip { 
+  border-radius: mixins.rem(8);
+  background: #242b32;
+  color: #586879;
+  font-size: mixins.rem(12);
+  font-weight: 700;
+  padding: mixins.rem(5) mixins.rem(10);
+  cursor: pointer;
+}
+
+.metric {
+  @include reusable.flex-row(center, space-between);
+  font-size: mixins.rem(12.8);
+  color: var(--pm-text-muted);
+
+  strong {
+    color: var(--pm-text);
+    font-size: mixins.rem(13.44);
+  }
+}
+
+.toWinBlock {
+  @include reusable.flex-column(mixins.rem(6));
+}
+
+.toWinRow {
+  min-height: mixins.rem(50);
+}
+
+.toWinLabel {
+  font-size: mixins.rem(13);
+}
+
+.toWinValue {
+  font-size: mixins.rem(30) !important;
+  line-height: 1;
+}
+
+.cta {
+  margin-top: mixins.rem(4);
+  border: 1px solid color-mix(in oklch, var(--pm-yes) 60%, var(--pm-border));
+  background: color-mix(in oklch, var(--pm-yes) 24%, transparent);
+  color: var(--pm-yes);
+  border-radius: mixins.rem(8);
+  font-size: mixins.rem(13.12);
+  font-weight: 700;
+  padding: mixins.rem(8.96) mixins.rem(10.4);
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+}
+
+.empty {
+  margin: 0;
+  color: var(--pm-text-muted);
+  font-size: mixins.rem(13.6);
+}

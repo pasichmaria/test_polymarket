@@ -1,0 +1,107 @@
+@use '@/styles/mixins.scss' as mixins;
+@use '@/styles/globals.scss' as global;
+
+.root {
+  min-width: 0;
+  position: relative;
+}
+
+.input {
+  display: flex;
+  height: mixins.rem(40);
+  width: 100%;
+  border-radius: mixins.rem(6);
+  border: 1px solid transparent;
+  color: var(--text-primary);
+  font-size: mixins.rem(14);
+  padding: mixins.rem(4) mixins.rem(12) mixins.rem(4) mixins.rem(44);
+  outline: none;
+
+
+  &::placeholder {
+    color: var(--text-muted);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  @media (max-width: mixins.em(global.$tablet)) {
+    font-size: mixins.rem(16);
+  }
+}
+
+.icon {
+  position: absolute;
+  left: mixins.rem(12);
+  top: 50%;
+  width: mixins.rem(18);
+  height: mixins.rem(18);
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  display: block;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.compactRoot {
+  width: mixins.rem(36);
+  transition: width 0.2s ease;
+
+  .input {
+    width: 100%;
+    padding-left: mixins.rem(36);
+    padding-right: 0;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .icon {
+    color: var(--white);
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .input:focus,
+  .input:focus-visible {
+    cursor: text;
+  }
+
+  &:hover .input {
+    background: transparent;
+  }
+
+  &:focus-within {
+    width: mixins.rem(180);
+  }
+
+  &:focus-within .input {
+    background: var(--bg-card-default);
+    border-radius: mixins.rem(10);
+    padding-left: mixins.rem(44);
+    padding-right: mixins.rem(12);
+  }
+
+  &:focus-within .icon {
+    left: mixins.rem(14);
+    transform: translateY(-50%);
+  }
+
+  @media (max-width: mixins.em(global.$mobile)) {
+    width: 100%;
+
+    .input {
+      padding-left: mixins.rem(44);
+      padding-right: mixins.rem(12);
+      cursor: text;
+    }
+
+    .icon {
+      left: mixins.rem(14);
+      transform: translateY(-50%);
+    }
+  }
+}

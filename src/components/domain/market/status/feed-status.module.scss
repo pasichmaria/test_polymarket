@@ -1,0 +1,63 @@
+@use '@/styles/mixins' as mixins;
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: mixins.rem(6.4);
+  font-size: mixins.rem(10.4);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: mixins.rem(5.6) mixins.rem(9.6);
+  border-radius: 9999px;
+  border: 1px solid var(--pm-border);
+  color: var(--pm-text-muted);
+  background: color-mix(in oklch, var(--pm-bg-elevated) 80%, transparent);
+}
+
+.dot {
+  width: mixins.rem(6);
+  height: mixins.rem(6);
+  border-radius: 50%;
+  background: var(--pm-text-muted);
+  flex-shrink: 0;
+}
+
+.live {
+  border-color: color-mix(in oklch, var(--pm-yes) 50%, var(--pm-border));
+  color: var(--pm-yes);
+  background: color-mix(in oklch, var(--pm-yes) 12%, var(--pm-bg-elevated));
+
+  .dot {
+    background: var(--pm-yes);
+    box-shadow: 0 0 10px color-mix(in oklch, var(--pm-yes) 60%, transparent);
+    animation: pulse 1.3s ease-in-out infinite;
+  }
+}
+
+.sim {
+  .dot {
+    background: oklch(0.7 0.12 60);
+  }
+}
+
+.error {
+  border-color: oklch(0.5 0.2 25);
+  color: oklch(0.75 0.12 25);
+}
+
+.connecting {
+  .dot {
+    animation: pulse 0.6s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}

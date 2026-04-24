@@ -1,0 +1,53 @@
+@use '@/styles/mixins.scss' as mixins;
+@use '@/styles/reusable.scss' as reusable;
+
+.button {
+  @include reusable.inline-row(center, center, mixins.rem(8));
+  border-radius: mixins.rem(8);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+
+.lg {
+  min-height: mixins.rem(48);
+  padding: 0 mixins.rem(18);
+  font-size: mixins.rem(15);
+  font-weight: 700;
+}
+
+.md {
+  padding: mixins.rem(8) mixins.rem(16);
+  font-size: mixins.rem(14);
+  font-weight: 600;
+}
+
+.sm {
+  min-height: mixins.rem(28);
+  padding: mixins.rem(5.44) mixins.rem(9.6);
+  font-size: mixins.rem(11.52);
+  font-weight: 700;
+  border-radius: mixins.rem(6.4);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--brand-primary-soft);
+
+  &:hover {
+    color: var(--brand-primary-light);
+  }
+}
+
+.primary {
+  border-color: color-mix(in srgb, var(--brand-primary) 70%, var(--white) 15%);
+  background: var(--brand-primary-soft);
+  color: var(--white);
+}
+
+.icon {
+  width: mixins.rem(14);
+  height: mixins.rem(14);
+  flex-shrink: 0;
+}

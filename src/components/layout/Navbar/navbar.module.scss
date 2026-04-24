@@ -1,0 +1,56 @@
+@use '@/styles/mixins.scss' as mixins;
+@use '@/styles/globals.scss' as global;
+@use '@/styles/reusable.scss' as reusable;
+
+.navigation {
+  @include reusable.flex-row(center, flex-start, mixins.rem(16));
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.navItem {
+  @include reusable.inline-row(stretch, flex-start, mixins.rem(8));
+  cursor: pointer;
+  padding: mixins.rem(10) mixins.rem(0);
+  font-size: mixins.rem(14);
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  &:hover {
+    color: var(--text-primary);
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  @media (max-width: mixins.em(global.$mobileSmall)) {
+    font-size: mixins.rem(13);
+  }
+}
+
+.navItemActive {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.trendingIcon {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: currentColor;
+
+  svg {
+    display: block;
+  }
+}

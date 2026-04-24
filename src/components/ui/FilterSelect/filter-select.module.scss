@@ -1,0 +1,42 @@
+@use '@/styles/mixins.scss' as mixins;
+@use '@/styles/reusable.scss' as reusable;
+
+.root {
+  position: relative;
+  @include reusable.inline-row(center);
+  min-height: mixins.rem(32);
+  border: 1px solid var(--surface-150);
+  border-radius: mixins.rem(24);
+  background: var(--surface-primary);
+  color: var(--text-primary);
+  padding: 0 mixins.rem(12);
+  gap: mixins.rem(8);
+}
+
+.icon {
+  width: mixins.rem(14);
+  height: mixins.rem(14);
+  display: inline-flex;
+  color: currentColor;
+  flex-shrink: 0;
+}
+
+.select {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  font-size: mixins.rem(13);
+  appearance: none;
+  padding-right: mixins.rem(18);
+  cursor: pointer;
+}
+
+.chevron {
+  position: absolute;
+  right: mixins.rem(10);
+  width: mixins.rem(10);
+  height: mixins.rem(10);
+  pointer-events: none;
+  color: var(--text-secondary);
+}
