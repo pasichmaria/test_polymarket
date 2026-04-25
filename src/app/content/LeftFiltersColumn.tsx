@@ -1,6 +1,6 @@
 'use client';
 
-import styles from './category-page-content.module.scss';
+import styles from './left-filters-column.module.scss';
 
 export type LeftFilterItem = {
   id: string;

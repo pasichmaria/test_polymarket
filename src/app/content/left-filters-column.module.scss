@@ -1,0 +1,52 @@
+@use '@/styles/mixins.scss' as mixins;
+
+.leftMenu {
+  display: flex;
+  flex-direction: column;
+  gap: mixins.rem(4);
+  padding-top: mixins.rem(2);
+}
+
+.leftMenuDivider {
+  height: 1px;
+  background: color-mix(in oklch, var(--pm-border) 78%, transparent);
+  margin: mixins.rem(8) 0;
+}
+
+.leftMenuItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--pm-text-muted);
+  border-radius: mixins.rem(8);
+  padding: mixins.rem(8) mixins.rem(10);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.16s ease, color 0.16s ease;
+
+  &:hover {
+    background: color-mix(in oklch, var(--brand-primary) 11%, transparent);
+    color: var(--pm-text);
+  }
+}
+
+.leftMenuItemActive {
+  background: color-mix(in oklch, var(--brand-primary) 16%, transparent);
+  color: var(--pm-text);
+}
+
+.leftMenuLabelWrap {
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: mixins.rem(6);
+}
+
+.leftMenuCount {
+  color: color-mix(in oklch, var(--pm-text-muted) 82%, var(--pm-text));
+  font-size: mixins.rem(12);
+  font-weight: 500;
+}
